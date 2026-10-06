@@ -1,0 +1,11 @@
+groups:
+  - name: fastapi
+    rules:
+      - alert: FastAPIDown
+        expr: up{job="fastapi"} == 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: FastAPI is unavailable
+          description: Prometheus cannot scrape the FastAPI metrics endpoint.
